@@ -1,13 +1,12 @@
+# -*- coding: utf-8 -*-
 from pacote_de_primos.fornecedor import obterListas
 from math import sqrt
 from random import randint
 
-def euclidiano(b, n): #Algoritmo de Euclides para achar M.D.C.
-    while (n != 0):
-        b, n = n, b % n
-    return b
+# ---------------------------------------- Fatoração Ingênua ----------------------------------------
 
-def buscaDivisor(n, raiz, lista): #Busca um divisor primo de 'n'.
+# Busca um divisor primo de 'n'.
+def buscaDivisor(n, raiz, lista):
     for x in lista:
         if ((n%x) == 0):
             return x
@@ -22,11 +21,13 @@ def fatoracaoIngenua(n): #Fatoracao ingenua para achar divisores primos.
         a = buscaDivisor(n, raiz, primos.LISTA)
         if (a > 1):
             return a
-        if (a < 1): #Se a raiz de 'n' for atingida.
+        if (a < 1): # Testa se a raiz de 'n' for atingida.
             break
     return 1
 
-def composicaoMiller(n): #Teste de Miller e composicao.
+# -------------------------------------- Composição e Miller ---------------------------------------
+
+def composicaoMiller(n):
     y = n - 1
     exp = []
     while (y % 2 == 0): #Vetor de expoentes menores que 'n-1'.
@@ -51,7 +52,15 @@ def composicaoMiller(n): #Teste de Miller e composicao.
             return False
     return True
 
-def testeLucas(n): #Teste de primalidade.
+# ----------------------------------------- Teste de Lucas ------------------------------------------
+
+#Algoritmo de Euclides para achar M.D.C.
+def euclidiano(b, n):
+    while (n != 0):
+        b, n = n, b % n
+    return b
+
+def testeLucas(n):
     i = 1
     achou = False
     limit = 100 #Definicao do limite de bases.

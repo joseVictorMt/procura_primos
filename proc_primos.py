@@ -1,11 +1,17 @@
+# -*- coding: utf-8 -*-
 from teste_primos import fatoracaoIngenua, composicaoMiller, testeLucas
 
-def ehPrimo(num): #Testa se 'num' e primo usando as tres funcoes abaixo.
-    if (fatoracaoIngenua(num) > 1): #Se encontrar um fator maior que 1...
+# Verifica se o parâmetro 'num' e primo usando os seguintes procedimentos:
+# Fatoração ingênua; Teste da Composição e de Miller; e Teste de Lucas.
+def ehPrimo(num):
+    # Verifica se a fatoração ingênua encontrou um divisor maior que 1 para 'num'.
+    if (fatoracaoIngenua(num) > 1):
         return False
-    if(composicaoMiller(num)): #Se esse teste nao for inconclusivo...
+    # Verifica se a Composição de Miler foi conclusiva para 'num'. 
+    if(composicaoMiller(num)):
         return False
-    if(not testeLucas(num)): #Se nao houver valor a de ordem N-1 em Zn...
+    # Verifica se o Teste de Lucas concluiu que 'num' não é primo.
+    if(not testeLucas(num)):
         return False
     return True
 
@@ -20,10 +26,11 @@ while(True):
         raw_input("Pressione uma tecla para continuar...")
         exit(0)
 
-if(num != 2): #Testar se 'num' nao e 2, que e o unico primo par.
+# Testar se 'num' não é 2, que é o unico primo par.
+if(num != 2):
     if(num % 2 == 0):
         num += 1
-    while(not ehPrimo(num)): #Buscando um primo a partir de 'num'.
+    while(not ehPrimo(num)): # Busca um primo a partir de 'num'.
         num += 2
 print (("\n%d eh o proximo primo.") %(num))
 
